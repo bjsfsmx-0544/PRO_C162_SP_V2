@@ -23,22 +23,22 @@ AFRAME.registerComponent("bowling-balls", {
 
         var camera = document.querySelector("#camera").object3D;
 
-        //get the camera direction as Three.js Vector
+        // Obtener la dirección de la cámara como un vector de Three.js
         var direction = new THREE.Vector3();
         camera.getWorldDirection(direction);
 
-        //set the velocity and it's direction
+        // Establecer la velocidad y su dirección
         ball.setAttribute("velocity", direction.multiplyScalar(-10));
 
         var scene = document.querySelector("#scene");
 
-        //set the bullet as the dynamic entity
+        // Establecer la bola como una entidad dinámica
         ball.setAttribute("dynamic-body", {
           shape: "sphere",
           mass: "10",
         });
 
-        //add the collide event listener to the bullet
+        // Agregar el escucha de eventos de colisión a la bola
         ball.addEventListener("collide", this.removeBall);
 
         scene.appendChild(ball);
@@ -47,15 +47,15 @@ AFRAME.registerComponent("bowling-balls", {
   },
   removeBall: function (e) {
     
-    //bullet element
+    // Elemento de la bola
     var element = e.detail.target.el;
 
-    //element which is hit
+    // Elemento que es golpeado
     var elementHit = e.detail.body.el;
 
     if (elementHit.id.includes("pin")) {
       
-      //impulse and point vector
+      // Impulso y vector punto
       var impulse = new CANNON.Vec3(0,1,-15);
       var worldPoint = new CANNON.Vec3().copy(
         elementHit.getAttribute("position")
@@ -63,10 +63,10 @@ AFRAME.registerComponent("bowling-balls", {
 
       elementHit.body.applyForce(impulse, worldPoint);
 
-      //remove event listener
+      // Eliminar al escucha del evento
       element.removeEventListener("collide", this.removeBall);
 
-      //remove the bullets from the scene
+      // Eliminar la bola de la escena
       var scene = document.querySelector("#scene");
       scene.removeChild(element);
     }
