@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bowling Game in Virtual Reality</title>
+    <title>Juego de bolos en realidad virtual (VR)</title>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>   
     <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
     
@@ -10,7 +10,7 @@
   <body>
     <a-scene id="scene" >
 
-      <!--Assets-->
+      <!-- Recursos -->
       <a-assets>
           <a-asset-item
             id="pin"
@@ -19,7 +19,7 @@
         
       </a-assets>
       
-      <!--Camera and Cursor-->
+      <!-- Cámara y cursor -->
       <a-entity
         id="camera"
         camera
@@ -31,10 +31,10 @@
         <a-cursor id="cursor" ></a-cursor>        
       </a-entity>
 
-      <!--Bowling Balls-->
+      <!-- Bola de bolos -->
       <a-entity bowling-balls></a-entity>
 
-      <!--Bowling Lane-->
+      <!-- Línea de bolos -->
       <a-entity>
 
         <a-plane
@@ -86,7 +86,7 @@
       
 
 
-      <!--Bowling Pins-->
+      <!-- Pinos de bolos -->
       <a-entity position="0 0 -10">
 
         <a-entity
